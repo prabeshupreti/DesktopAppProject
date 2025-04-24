@@ -14,8 +14,10 @@ namespace DesktopAppProject
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string ConnectionString = "server=localhost;uid=root;database=TurboMartDB";
-            optionsBuilder.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString));
+
+            string ConnectionString = "Data Source=.; Initial Catalog=POSDBTurboMart; Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+            optionsBuilder.UseSqlServer(ConnectionString);
 
             base.OnConfiguring(optionsBuilder);
         }
