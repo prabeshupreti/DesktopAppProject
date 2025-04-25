@@ -37,7 +37,7 @@
             label1 = new Label();
             panel2 = new Panel();
             EditButton = new Button();
-            ProductDataGridView = new DataGridView();
+            ProductTable = new DataGridView();
             AddProductButton = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CloseButton).BeginInit();
@@ -45,7 +45,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)ProductDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ProductTable).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -125,7 +125,7 @@
             // 
             panel2.BackColor = Color.FromArgb(224, 224, 200);
             panel2.Controls.Add(EditButton);
-            panel2.Controls.Add(ProductDataGridView);
+            panel2.Controls.Add(ProductTable);
             panel2.Controls.Add(AddProductButton);
             panel2.Location = new Point(-4, 115);
             panel2.Name = "panel2";
@@ -145,17 +145,18 @@
             EditButton.TabIndex = 25;
             EditButton.Text = "Edit a Product";
             EditButton.UseVisualStyleBackColor = false;
+            EditButton.Click += EditButton_Click;
             // 
-            // ProductDataGridView
+            // ProductTable
             // 
-            ProductDataGridView.AllowUserToAddRows = false;
-            ProductDataGridView.AllowUserToDeleteRows = false;
-            ProductDataGridView.AllowUserToOrderColumns = true;
-            ProductDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            ProductDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            ProductDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllHeaders;
-            ProductDataGridView.BackgroundColor = SystemColors.HighlightText;
-            ProductDataGridView.ColumnHeadersHeight = 34;
+            ProductTable.AllowUserToAddRows = false;
+            ProductTable.AllowUserToDeleteRows = false;
+            ProductTable.AllowUserToOrderColumns = true;
+            ProductTable.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ProductTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ProductTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllHeaders;
+            ProductTable.BackgroundColor = SystemColors.HighlightText;
+            ProductTable.ColumnHeadersHeight = 34;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F);
@@ -165,19 +166,20 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            ProductDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            ProductDataGridView.GridColor = Color.DeepSkyBlue;
-            ProductDataGridView.Location = new Point(32, 122);
-            ProductDataGridView.MultiSelect = false;
-            ProductDataGridView.Name = "ProductDataGridView";
-            ProductDataGridView.ReadOnly = true;
-            ProductDataGridView.RowHeadersWidth = 50;
-            ProductDataGridView.RowTemplate.Height = 50;
-            ProductDataGridView.RowTemplate.Resizable = DataGridViewTriState.True;
-            ProductDataGridView.ShowCellToolTips = false;
-            ProductDataGridView.Size = new Size(1179, 419);
-            ProductDataGridView.TabIndex = 24;
-            ProductDataGridView.TabStop = false;
+            ProductTable.DefaultCellStyle = dataGridViewCellStyle1;
+            ProductTable.GridColor = Color.DeepSkyBlue;
+            ProductTable.Location = new Point(32, 122);
+            ProductTable.MultiSelect = false;
+            ProductTable.Name = "ProductTable";
+            ProductTable.ReadOnly = true;
+            ProductTable.RowHeadersWidth = 50;
+            ProductTable.RowTemplate.Height = 50;
+            ProductTable.RowTemplate.Resizable = DataGridViewTriState.True;
+            ProductTable.ShowCellToolTips = false;
+            ProductTable.Size = new Size(1179, 419);
+            ProductTable.TabIndex = 24;
+            ProductTable.TabStop = false;
+            ProductTable.CellClick += ProductTable_CellClick;
             // 
             // AddProductButton
             // 
@@ -212,7 +214,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)ProductDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ProductTable).EndInit();
             ResumeLayout(false);
         }
 
@@ -227,6 +229,6 @@
         private PictureBox Minimize;
         private Button AddProductButton;
         private Button EditButton;
-        private DataGridView ProductDataGridView;
+        private DataGridView ProductTable;
     }
 }

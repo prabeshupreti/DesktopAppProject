@@ -18,11 +18,15 @@ namespace TurboMart.WindowsForms.Products
         private bool _dragging = false;
         private Point _start_point = new Point(0, 0);
 
+        int ProductId;
+
         public Products()
         {
             InitializeComponent();
 
             this.FormBorderStyle = FormBorderStyle.None;
+
+            EditButton.Hide();
         }
 
         private void Products_Load(object sender, EventArgs e)
@@ -34,8 +38,8 @@ namespace TurboMart.WindowsForms.Products
         {
             AppDbContext appDbContext = new AppDbContext();
 
-            ProductDataGridView.DataSource = Enumerable.Empty<Product>();
-            ProductDataGridView.DataSource = appDbContext.Product.ToArray();
+            ProductTable.DataSource = Enumerable.Empty<Product>();
+            ProductTable.DataSource = appDbContext.Product.ToArray();
         }
 
         private void CloseButton_MouseEnter(object sender, EventArgs e)
@@ -68,9 +72,38 @@ namespace TurboMart.WindowsForms.Products
         {
             DialogResult dialogResult = new AddProduct().ShowDialog();
 
-            if (dialogResult == DialogResult.OK) 
+            if (dialogResult == DialogResult.OK)
             {
                 FetchProducts();
+            }
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            if (ProductId == 0)
+            {
+                MessageBox.Show("No Product is selected to edit.", "No Product Selected.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult dialogResult = new EditProduct(ProductId).ShowDialog();
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    FetchProducts();
+                }
+            }
+        }
+
+        private void ProductTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int Id = int.Parse(ProductTable.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                EditButton.Show();
+
+                ProductId = Id;
             }
         }
     }
